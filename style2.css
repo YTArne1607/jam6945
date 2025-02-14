@@ -1,0 +1,47 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Chalkduster, fantasy;
+  background-image: url("IMG_1264.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+#container-home {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#input-name {
+  width: 120px;
+  height: 20px;
+  border-radius: 20px;
+  text-align: center;
+  border: 3px solid coral;
+}
+
+#btn-play {
+  width: 144px;
+  height: 44px;
+  background-color: coral;
+  color: white;
+  border-radius: 20px;
+  border: 4px solid white;
+}
+
+#a-color {
+  color: coral;
+}
+
+#jam-img {
+  width: 100px;
+  height: 100px;
+}
+
+#meinFrame {
+  display: none;
+}

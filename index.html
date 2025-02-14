@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JAM</title>
+  <link href="style2.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+  
+<body>
+  <div id="container-home">
+   <div id="jam-con">
+    <img src="IMG_1268.png" id="jam-img">
+   </div>
+    Dein Name: 
+    <br>
+    <br>
+    <input type="text" id="input-name" placeholder="Namen eingeben">
+    <br>
+    <br>
+    
+    <button onclick="senden()" id="btn-play" class="fa">Spielen &#xf144;</button>
+   
+  </div>
+
+  <script>
+    function senden() {
+
+      const text = document.getElementById("input-name").value;
+      localStorage.setItem("gespeicherterText", text);
+      window.location.assign("pregame.html");
+        
+      
+      /*const frame = document.getElementById("meinFrame").contentWindow;
+      const text = document.getElementById("input-name").value;
+      frame.postMessage(text, "*"); // Besser wäre eine spezifische URL statt "*"
+      window.location.assign("pregame.html");*/
+    }
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>

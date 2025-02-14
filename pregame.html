@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Game</title>
+    <link rel="stylesheet" href="style.css"> <!-- Stelle sicher, dass der Name passt -->
+</head>
+<body>
+  
+    <div class="carousel-container">
+      <div id="flag-name"></div>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+        <button class="nav-button left" onclick="swipe('left')">&#8592;</button>
+        <div class="carousel">
+            <div class="flag">
+                <img src="photo2pixel_download 2.png" alt="Antikes Persien">
+            </div>
+            <div class="flag">
+                <img src="photo2pixel_download 3.png" alt="Römisches Reich">
+            </div>
+            <div class="flag">
+                <img src="photo2pixel_download 4.png" alt="Antikes Griechenland">
+            </div>
+        </div>
+        <button class="nav-button right" onclick="swipe('right')">&#8594;</button>
+
+      <br>
+      <br>
+      <button id="land-wählen">Wählen</button>
+      <br>
+      <br>
+
+      <h2 id="pl-name-out">Spieler: <p id="output-name"></p></h2>
+    </div>
+
+    <script>
+      /*window.addEventListener("message", (event) => {
+        document.getElementById("pl-name-out").innerText = event.data;
+      });*/
+        window.addEventListener("DOMContentLoaded", () => {
+            const gespeicherterText = localStorage.getItem("gespeicherterText");
+            if (gespeicherterText) {
+              document.getElementById("output-name").innerHTML = gespeicherterText;
+            }
+          });
+    </script>
+
+
+    <script src="script.js"></script> <!-- Stelle sicher, dass es "script.js" heißt -->
+</body>
+</html>
+
