@@ -1,6 +1,87 @@
 body {
     background-image: url("IMG_1261.png");
     background-repeat: no-repeat;
-    background-size: 100% auto;
-    
+    background-size: cover;
+}
+
+#redline-con {
+    text-align: center;
+    margin-top: 574px;
+}
+
+#redline {
+    width: 500px;
+    height: 100px;
+}
+
+#container-left {
+    position: absolute;
+    bottom: 244px;
+}
+
+#container-middle {
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 80%;
+}
+
+#img-decurio {
+    width: 144px;
+    height: auto;
+    border-radius: 20px;
+}
+
+#img-roemer1 {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    animation: walkLeft 5s cubic-bezier(0, 0, 0, 0);
+    left: 420px;
+}
+
+@keyframes walkLeft {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 420px;
+    }
+}
+
+#container-right {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    right: 244px;
+    bottom: 396px;
+    row-gap: 60px;
+}
+
+#img-gegner {
+    width: auto;
+    height: 120px;
+}
+
+#rauchwolke-gif {
+    position: absolute;
+    width: 400px;
+    height: auto;
+}
+
+#wolke-con {
+    position: relative;
+    right: 300px;
+}
+
+#speer-con {
+    position: relative;
+    left: 400px;
+}
+
+#speer-img {
+    width: 144px;
+    height: auto;
 }

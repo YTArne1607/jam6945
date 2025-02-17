@@ -4,7 +4,8 @@ html {
 }
 
 body {
-  font-family: Chalkduster, fantasy;
+  
+  /*font-family: Chalkduster, fantasy;*/
   background-image: url("IMG_1264.webp");
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,4 +45,16 @@ body {
 
 #meinFrame {
   display: none;
+}
+
+h1 {
+  font-family: "Jacquard 12", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 50px;
+  color: coral;
+}
+
+#white-name {
+  color: white;
 }

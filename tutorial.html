@@ -7,6 +7,58 @@
     <link rel="stylesheet" href="style3.css">
 </head>
 <body>
-    
+    <div id="container-left">
+        <div id="roemer">
+            
+        </div>
+        <div id="speer-con"></div>
+    </div>
+    <div id="redline-con">
+        <img id="redline" src="IMG_1296.png">
+    </div>
+    <div id="container-middle">
+        <img id="img-decurio" src="IMG_1306.jpeg">
+    </div>
+
+    <div id="container-right">
+        <div id="wolke-con"></div>
+        <img src="IMG_1308-removebg-preview.png" id="img-gegner">
+    </div>
+
+    <script>
+        document.getElementById("img-decurio").addEventListener("click", function() {
+            const roemer1 = document.getElementById("roemer");
+            roemer1.innerHTML = "<img id='img-roemer1' src='IMG_1290-removebg-preview 2.png'>"
+
+
+            const leben_decurio = 950;
+            const leben_gegner = 800;
+            const AZ_decurio = 2000 + 5000;
+            const AZ_gegner = 3000;
+
+            setTimeout(function() {
+                document.getElementById("speer-con").innerHTML = "<img id='speer-img' src='speer.png'>"
+            }, AZ_decurio)
+
+            setTimeout(function() {
+                document.getElementById("wolke-con").innerHTML += "<img id='rauchwolke-gif' src='rauchwolke.gif'>";
+
+                const rauchWolke = document.getElementById("rauchwolke-gif");
+
+            }, AZ_gegner);
+
+            setTimeout(function() {
+                document.getElementById("wolke-con").innerHTML = ""
+            }, 8500);
+
+            
+        });
+
+
+        
+        
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
