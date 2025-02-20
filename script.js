@@ -3,6 +3,8 @@ const flags = ["Antikes Persien", "Römisches Reich", "Antikes Griechenland"];
 const flagName = document.getElementById("flag-name");
 
 
+
+
 /*function updateFlag() {
     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
     flagName.textContent = flags[currentIndex]; // Namen aktualisieren
@@ -62,3 +64,5 @@ savePlayer({ id: 1, name: document.getElementById("output-name").value, score: 0
 document.getElementById("land-wählen").addEventListener("click", function() {
     window.location.assign("tutorial.html");
 });
+
+

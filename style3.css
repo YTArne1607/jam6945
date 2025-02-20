@@ -1,68 +1,110 @@
 body {
     background-image: url("IMG_1261.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 800px;
+    user-select: none;
+    
 }
 
 #redline-con {
-    text-align: center;
-    margin-top: 574px;
+    position: relative;
+    top: 417px;
+    display: flex;
+    justify-content: center;
+
 }
 
+
 #redline {
+    position: absolute;
     width: 500px;
-    height: 100px;
+    height: 75px;
 }
 
 #container-left {
-    position: absolute;
-    bottom: 244px;
+    position: relative;
+    top: 300px;
 }
 
 #container-middle {
     position: relative;
     align-items: center;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    top: 80%;
 }
 
 #img-decurio {
-    width: 144px;
-    height: auto;
+    width: 110px;
+    height: 160px;
     border-radius: 20px;
+    cursor: grab;
+    position: absolute;
+    user-select: none;
+    touch-action: none;
+}
+
+#img-decurio.dragging {
+    opacity: 0.7;
+}
+
+#img-decurio.valid {
+    border: 3px solid #33c759;
+}
+
+#img-decurio.invalid {
+    border: 3px solid red;
 }
 
 #img-roemer1 {
     position: absolute;
     width: 80px;
     height: auto;
-    animation: walkLeft 5s cubic-bezier(0, 0, 0, 0);
+    animation: walkRight 5s cubic-bezier(0, 0, 0, 0);
     left: 420px;
+    filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
 }
 
-@keyframes walkLeft {
+@keyframes walkRight {
     0% {
         left: 0;
+        top: 0;
+        filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
+    }
+    25% {
+        left: 105px;
+        top: 8px;
+        filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
+    }
+    50% {
+        left: 210px;
+        top: 0;
+        filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
+    }
+    75% {
+        left: 315px;
+        top: 8px;
+        filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
     }
     100% {
         left: 420px;
+        top: 0;
+        filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.1));
     }
 }
 
 #container-right {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: right;
     right: 244px;
-    bottom: 396px;
+    bottom: 260px;
     row-gap: 60px;
 }
 
 #img-gegner {
     width: auto;
     height: 120px;
+    animation: tilt-walk 0.5s ease-in-out infinite alternate;
 }
 
 #rauchwolke-gif {
@@ -78,10 +120,70 @@ body {
 
 #speer-con {
     position: relative;
-    left: 400px;
+    left: 240px;
 }
 
 #speer-img {
-    width: 144px;
+    position: absolute;
+    left: 420px;
+    width: 80px;
     height: auto;
+    animation: speer 1.5s cubic-bezier(0, 0, 0, 0);
+}
+
+@keyframes speer {
+    0% {
+        left: 164px;
+    }
+    100% {
+        left: 420px;
+    }
+}
+
+@keyframes tilt-walk {
+  0% { transform: rotate(5deg); }
+  25% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(0deg); }
+  100% { transform: rotate(5deg); }
+}
+
+#karte1 {
+    position: absolute;
+    width: 110px;
+    height: 160px;
+    border: 4px solid white;
+    border-radius: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 500px;
+}
+
+.karte {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#dropzone {
+    border: 2px dashed lightgray;
+    position: absolute;
+    color: #999999;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    width: 464px;
+    height: 210px;
+    background-color: rgba(0, 255, 0, 0.1);
+    user-select: none;
+}
+
+#voice-gegner {
+    position: absolute;
 }

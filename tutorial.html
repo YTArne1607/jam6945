@@ -12,28 +12,56 @@
             
         </div>
         <div id="speer-con"></div>
+        <div id="dropzone">Hier hinziehen</div>
     </div>
-    <div id="redline-con">
-        <img id="redline" src="IMG_1296.png">
-    </div>
+    
     <div id="container-middle">
-        <img id="img-decurio" src="IMG_1306.jpeg">
+        <div id="karte1">
+            <img id="img-decurio" src="IMG_1306.jpeg" draggable="false">
+        </div>
+        <div id="karte2">
+
+        </div>
+
+        <div id="karte3">
+
+        </div>
+
+        <div id="karte4">
+
+        </div>
+        <div id="redline-con">
+            <img id="redline" src="IMG_1296.png">
+        </div>
+    
     </div>
+
 
     <div id="container-right">
         <div id="wolke-con"></div>
         <img src="IMG_1308-removebg-preview.png" id="img-gegner">
+        <audio id="sound-gegner" controls loop hidden>
+            <source src="voice-gegner.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <script>
-        document.getElementById("img-decurio").addEventListener("click", function() {
-            const roemer1 = document.getElementById("roemer");
-            roemer1.innerHTML = "<img id='img-roemer1' src='IMG_1290-removebg-preview 2.png'>"
 
+            const wahlLand = localStorage.getItem("wahlLand");
+    
+        if (wahlLand == "Römisches Reich") {
+
+            
+        
+        document.getElementById("img-gegner").addEventListener("click", function() {
+            const roemer1 = document.getElementById("roemer");
+            roemer1.innerHTML = "<img id='img-roemer1' src='IMG_1290-removebg-preview 2.png'>";
+
+            document.getElementById("sound-gegner").play()
 
             const leben_decurio = 950;
             const leben_gegner = 800;
-            const AZ_decurio = 2000 + 5000;
+            const AZ_decurio = 2000 + 6000;
             const AZ_gegner = 3000;
 
             setTimeout(function() {
@@ -48,15 +76,113 @@
             }, AZ_gegner);
 
             setTimeout(function() {
-                document.getElementById("wolke-con").innerHTML = ""
-            }, 8500);
+                document.getElementById("wolke-con").innerHTML = "";
+                setTimeout(function() {
+                    document.getElementById("speer-con").innerHTML = "";
+                }, 1500);
+                
+            }, 8000);
 
             
         });
 
+    } else if (wahlLand == "Antikes Persien") {
+            window.location.assign("index.html");
+    } else if (wahlLand == "Antikes Griechenland") {
+                window.location.assign("index.html");
+        } 
 
         
+        const draggable = document.getElementById("img-decurio");
+        const dropzone = document.getElementById("dropzone");
+
+        let startX, startY, offsetX, offsetY;
+        let isDragging = false;
+
+        function startDrag(event) {
+            isDragging = true;
+
+            let clientX = event.touches ? event.touches[0].clientX : event.clientX;
+            let clientY = event.touches ? event.touches[0].clientY : event.clientY;
+
+            startX = draggable.offsetLeft;
+            startY = draggable.offsetTop;
+            offsetX = clientX - startX;
+            offsetY = clientY - startY;
+
+            draggable.style.position = "absolute";
+            draggable.style.zIndex = 1000;
+
+            event.preventDefault();
+        }
+
+        function moveDrag(event) {
+            if (!isDragging) return;
+
+            let clientX = event.touches ? event.touches[0].clientX : event.clientX;
+            let clientY = event.touches ? event.touches[0].clientY : event.clientY;
+
+            let newX = clientX - offsetX;
+            let newY = clientY - offsetY;
+
+            draggable.style.left = `${newX}px`;
+            draggable.style.top = `${newY}px`;
+
+            const rect = dropzone.getBoundingClientRect();
+            if (
+                clientX > rect.left && clientX < rect.right &&
+                clientY > rect.top && clientY < rect.bottom
+            ) {
+                draggable.classList.add("valid");
+                draggable.classList.remove("invalid");
+            } else {
+                draggable.classList.add("invalid");
+                draggable.classList.remove("valid");
+            }
+        }
+
+        function endDrag(event) {
+            if (!isDragging) return;
+            isDragging = false;
+
+            let clientX = event.changedTouches ? event.changedTouches[0].clientX : event.clientX;
+            let clientY = event.changedTouches ? event.changedTouches[0].clientY : event.clientY;
+
+            const rect = dropzone.getBoundingClientRect();
+            const bodyRect = document.body.getBoundingClientRect(); // Fix für falsche Koordinaten
+
+            if (
+                clientX > rect.left && clientX < rect.right &&
+                clientY > rect.top && clientY < rect.bottom
+            ) {
+                // Setze das Bild genau in die Mitte der Dropzone (relativ zu body)
+                const dropX = rect.left - bodyRect.left + (rect.width / 2 - draggable.clientWidth / 2);
+                const dropY = rect.top - bodyRect.top + (rect.height / 2 - draggable.clientHeight / 2);
+
+                draggable.style.left = `${dropX}px`;
+                draggable.style.top = `${dropY}px`;
+
+                draggable.classList.remove("valid", "invalid");
+                draggable.style.zIndex = "auto"; // Fix für Touch-Devices
+            } else {
+                // Falls außerhalb abgelegt → Zurück zur Startposition
+                draggable.style.left = `${startX}px`;
+                draggable.style.top = `${startY}px`;
+                draggable.classList.remove("valid", "invalid");
+            }
+        }
+
+        // Maus-Events
+        draggable.addEventListener("mousedown", startDrag);
+        document.addEventListener("mousemove", moveDrag);
+        document.addEventListener("mouseup", endDrag);
+
+        // Touch-Events für iPads & iPhones
+        draggable.addEventListener("touchstart", startDrag, { passive: false });
+        document.addEventListener("touchmove", moveDrag, { passive: false });
+        document.addEventListener("touchend", endDrag);
         
+            
     </script>
 
     <script src="script.js"></script>

@@ -48,6 +48,12 @@
               document.getElementById("output-name").innerHTML = gespeicherterText;
             }
           });
+
+        document.getElementById("land-wählen").addEventListener("click", function() {
+            localStorage.setItem("wahlLand", flags[currentIndex]);
+            
+        });
+        
     </script>
 
 
